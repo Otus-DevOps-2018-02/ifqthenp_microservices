@@ -4,3 +4,10 @@ ubuntu                     16.04               c9d990395902        9 days ago   
 hello-world                latest              e38bc07ac18e        10 days ago         1.85kB
 tomcat                     8.5.24-jre8         5e402de638b8        3 months ago        558MB
 mysql                      latest              7d83a47ab2d2        4 months ago        408MB
+
+Having run the Docker commands "docker inspect <container_id>" and "docker inspect <image_id>"
+one can conclude that Docker image serves as a read-only template for Docker container.
+The Docker container adds a read-write layer on top of the static immutable image layers.
+
+In terms of object-oriented programming paradygm, Docker images are essentially classes and
+Docker containers are instances of the classes.
