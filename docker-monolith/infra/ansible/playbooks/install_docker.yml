@@ -1,0 +1,32 @@
+---
+- name: Install Docker Community Edition
+  hosts: all
+  become: true
+
+  tasks:
+    - name: Install packages to allow apt to use a repository over HTTPS
+      apt: name={{ item }} state=present update_cache=yes
+      with_items:
+          - apt-transport-https
+          - ca-certificates
+          - curl
+          - software-properties-common
+
+    - name: Download Docker's official GPG key
+      get_url:
+        url: https://download.docker.com/linux/ubuntu/gpg
+        dest: /tmp/docker.gpg
+
+    - name: Add Docker's official GPG key
+      apt_key:
+        id: 0EBFCD88
+        file: /tmp/docker.gpg
+        state: present
+
+    - name: Set up Docker stable repository
+      apt_repository:
+        repo: deb [arch=amd64] https://download.docker.com/linux/ubuntu xenial stable
+        state: present
+
+    - name: Install Docker
+      apt: name=docker-ce state=present update_cache=yes
