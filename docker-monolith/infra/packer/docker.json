@@ -18,7 +18,7 @@
   "post-processors": [],
   "provisioners": [
     {
-      "playbook_file": "ansible/playbooks/install_docker.yml",
+      "playbook_file": "ansible/playbooks/packer_install_docker.yml",
       "type": "ansible"
     }
   ]
