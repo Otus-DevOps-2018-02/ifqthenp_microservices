@@ -70,3 +70,27 @@ docker tag reddit:latest <your-login>/otus-reddit:1.0
 docker push <your-login>/otus-reddit:1.0
 docker logs reddit -f
 ```
+
+## :diamonds: HW 15. Docker images & microservices
+
+## Completed tasks
+
+- :large_blue_diamond: Added three components to the `src` directory for Reddit application microservices
+  - `post-py`
+  - `comment`
+  - `ui`
+- :large_blue_diamond: Created three Dockerfiles for the microservices and optimized Dockerfile commands to reduce image sizes
+- :large_blue_diamond: Created three Docker images with `docker build` command
+- :large_blue_diamond: Created bridged network `reddit`, assigned network aliases for containers, and launched containers in `reddit` network
+- :large_orange_diamond: Stopped running containers and relaunched them with new network aliases and environment variables:
+  1. `docker run -d --network=reddit --network-alias=post_db_new --network-alias=comment_db_new mongo:latest`
+  2. `docker run -d --network=reddit --network-alias=post_new -e POST_DATABASE_HOST='post_db_new' -e POST_DATABASE='posts_new' ifqthenp/otus-reddit/post:1.0`
+  3. `docker run -d --network=reddit --network-alias=comment_new -e COMMENT_DATABASE_HOST='comment_db_new' -e COMMENT_DATABASE='comments_new' ifqthenp/otus-reddit/comment:1.0`
+  4. `docker run -d --network=reddit -p 9292:9292 -e POST_SERVICE_HOST='post_new' -e COMMENT_SERVICE_HOST='comment_new' ifqthenp/otus-reddit/ui:1.0`
+- :large_orange_diamond: Created new images based on Linux Alpine and applied best practices to reduce image sizes for `post-py`, `comment`, and `ui` microservices. New pull request has been created on separate branch `docker-3-alpine`
+
+### Useful links
+
+- [hadolint: Dockerfile linter, validate inline bash, written in Haskell](https://github.com/hadolint/hadolint)
+- [Dockerfile reference](https://docs.docker.com/engine/reference/builder/)
+- [Best practices for writing Dockerfiles](https://docs.docker.com/develop/develop-images/dockerfile_best-practices/)
