@@ -1,9 +1,9 @@
 version: '3.6'
 services:
   post_db:
-    image: mongo:${MONGO_VERSION}
+    image: 'mongo:${MONGO_VERSION}'
     volumes:
-      - post_db:/data/db
+      - 'post_db:/data/db'
     networks:
       back_net:
         aliases:
@@ -11,28 +11,26 @@ services:
           - comment_db
   ui:
     build: ./ui
-    image: ${USERNAME}/ui:${APP_IMAGE_ALPINE}
+    image: '${USERNAME}/ui:${APP_IMAGE_ALPINE}'
     ports:
-      - ${PUMA_PORT}:${PUMA_PORT}/tcp
+      - '${PUMA_PORT}:${PUMA_PORT}/tcp'
     networks:
       - front_net
   post:
     build: ./post-py
-    image: ${USERNAME}/post:${APP_IMAGE_ALPINE}
+    image: '${USERNAME}/post:${APP_IMAGE_ALPINE}'
     networks:
       - front_net
       - back_net
   comment:
     build: ./comment
-    image: ${USERNAME}/comment:${APP_IMAGE_ALPINE}
+    image: '${USERNAME}/comment:${APP_IMAGE_ALPINE}'
     networks:
       - front_net
       - back_net
-
 volumes:
   post_db:
     name: post_db
-
 networks:
   back_net:
     ipam:
@@ -44,4 +42,3 @@ networks:
       config:
         - subnet: 10.0.1.0/24
     name: front_net
-
