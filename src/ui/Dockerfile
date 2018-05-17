@@ -1,17 +1,11 @@
-FROM alpine:latest
+FROM ubuntu:16.04
 
 WORKDIR /app
 COPY Gemfile* /app/
-
-RUN \
-    apk update \
-    && apk upgrade \
-    && apk add --no-cache --virtual build-dependencies ruby-dev build-base \
-    && apk add --no-cache ruby ruby-bundler \
-    && bundle config --global silence_root_warning 1 \
-    && bundle install \
-    && apk del build-dependencies
-
+RUN apt-get update -qq \
+    && apt-get install -y --no-install-recommends ruby-full ruby-dev build-essential \
+    && gem install bundler --no-ri --no-rdoc \
+    && bundle install
 COPY . /app
 
 ENV POST_SERVICE_HOST post

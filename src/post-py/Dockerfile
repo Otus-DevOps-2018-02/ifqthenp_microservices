@@ -1,17 +1,8 @@
-FROM alpine:latest
+FROM python:3.6.0-alpine
 
 WORKDIR /app
 COPY requirements.txt /app
-
-RUN \
-    apk update \
-    && apk upgrade \
-    && apk add --no-cache --virtual build-dependencies python-dev build-base \
-    && apk add --no-cache python3 \
-    && pip3 install flask pymongo \
-    && pip3 install -r requirements.txt \
-    && apk del build-dependencies
-
+RUN pip install flask pymongo && pip install -r /app/requirements.txt
 COPY . /app
 
 ENV POST_DATABASE_HOST post_db
