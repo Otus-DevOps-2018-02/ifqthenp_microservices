@@ -94,3 +94,28 @@ docker logs reddit -f
 - [hadolint: Dockerfile linter, validate inline bash, written in Haskell](https://github.com/hadolint/hadolint)
 - [Dockerfile reference](https://docs.docker.com/engine/reference/builder/)
 - [Best practices for writing Dockerfiles](https://docs.docker.com/develop/develop-images/dockerfile_best-practices/)
+
+## :diamonds: HW 16. Docker networking & docker-compose
+
+### Completed tasks
+
+- :large_blue_diamond: Launched number of containers with different Docker network drivers: `none`, `host`, and `bridge`
+- :large_blue_diamond: Explored Docker networking functionality using `joffotron/docker-net-tools` container with pre-installed networking utilities
+- :large_blue_diamond: Created `front_net` and `back_net` networks for Reddit application. Connected `post` and `comment` containers to both networks
+- :large_blue_diamond: Created `docker-compose.yml` file and transposed `docker container` commands with networks and network aliases to Compose format
+- :large_blue_diamond: Populated default values referenced in the Compose file using environment variables set in `.env` file
+- :large_orange_diamond: Default project name for Compose can be set in `.env` file using Compose environment variable `COMPOSE_PROJECT_NAME`. Alternatively, it can be set using `-p` command-line option
+- :large_orange_diamond: Created `docker-compose.override.yml` file to launch Ruby applications on Puma server in debug mode with 2 workers
+
+### Docker commands
+
+- `docker run -d --network=front_net -p 9292:9292 --name ui <your-login>/ui:1.0`
+- `docker run -d --network=back_net --name comment <your-login>/comment:1.0`
+- `docker run -d --network=back_net --name post <your-login>/post:1.0`
+- `docker run -d --network=back_net --name mongo_db --network-alias=post_db --network-alias=comment_db mongo:latest`
+- `docker network create back_net --subnet=10.0.2.0/24`
+- `docker network create front_net --subnet=10.0.1.0/24`
+- `docker network connect front_net post`
+- `docker network connect back_net post`
+- `docker-compose -f docker-compose.yml`
+- `docker-compose ps`
