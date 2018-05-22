@@ -30,7 +30,7 @@ resource "google_compute_instance" "gitlab-ci" {
 }
 
 resource "google_compute_firewall" "firewall_gitlab" {
-  name = "allow-gitlab-ci"
+  name = "gitlab-ci-allow"
 
   network = "default"
 
