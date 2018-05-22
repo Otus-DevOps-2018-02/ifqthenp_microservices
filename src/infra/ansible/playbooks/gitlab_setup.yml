@@ -1,0 +1,33 @@
+---
+- name: Create folders for Gitlab CI and prepare Docker Compose
+  hosts: tag_gitlab-ci
+  become: true
+
+  tasks:
+    - name: Get the public IP of GCE instance
+      ipify_facts:
+        timeout: 7
+        validate_certs: yes
+
+    - name: Create folders for Gitlab
+      file: path={{ item }} state=directory
+      with_items:
+        - /srv/gitlab/config
+        - /srv/gitlab/data
+        - /srv/gitlab/logs
+
+    - name: Copy Docker Compose template
+      template:
+        src: templates/docker-compose.yml.j2
+        dest: /srv/gitlab/docker-compose.yml
+        mode: '0644'
+
+    - name: Run Docker Compose
+      docker_service:
+        project_src: /srv/gitlab
+        state: present
+
+    - name: Check that Docker Compose has launched containers
+      assert:
+        that:
+        - "web.gitlab_web_1.state.running"
