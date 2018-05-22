@@ -119,3 +119,38 @@ docker logs reddit -f
 - `docker network connect back_net post`
 - `docker-compose -f docker-compose.yml`
 - `docker-compose ps`
+
+## :diamonds: HW 17. GitLab CI: Building Continuous Integration Pipeline
+
+### Completed tasks
+
+- :large_blue_diamond: created folder `gitlab-infra` with infrastructure code using Packer, Terraform, and Ansible to automate GitLab deployment with Docker
+- :large_blue_diamond: in GitLab CE created `homework` group with `example` project in it
+- :large_blue_diamond: defined CI/CD pipeline in `.gitlab-ci.yml`
+- :large_blue_diamond: registered runner for the project
+- :large_blue_diamond: added `reddit` monolith application into the repo
+- :large_blue_diamond: redefined CI/CD pipeline for testing `reddit` monolith app
+- :large_orange_diamond: integrated GitLab with Slack notifications
+
+### How to launch the project
+
+1. `cd` into `gitlab-infra` folder
+2. Run `packer build -var-file=packer/variables.json packer/gitlab.json` if you need to build an image with Docker and Docker Compose preinstalled
+3. `cd` into `terraform/bucket` folder and run `terraform init` to initialise storage for Terraform state
+4. `cd` into `terraform` folder
+5. Run `terraform init`, `terraform plan`, and `terraform apply` to create GCP instance based on previously Packer built image
+6. `cd` into `ansible` folder
+7. Run `ansible-playbook playbooks/gitlab-setup.yml` to complete GitLab CI setup
+8. Wait for couple of minutes for GitLab initial configuration to finalize
+9. Use GCP instance external IP to access GitLab's CI web interface
+
+### Useful commands
+
+Register Runner on GitLab CI host
+
+```shell
+docker run -d --name gitlab-runner --restart always \
+-v /srv/gitlab-runner/config:/etc/gitlab-runner \
+-v /var/run/docker.sock:/var/run/docker.sock \
+gitlab/gitlab-runner:latest
+```
