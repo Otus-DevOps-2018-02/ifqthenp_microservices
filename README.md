@@ -145,6 +145,12 @@ docker logs reddit -f
 
 ### Useful commands
 
+Change remote's URL in `.git/config`
+
+```shell
+git remote set-url gitlab http://<GCE PUBLIC IP>/homework/example.git
+```
+
 Register Runner on GitLab CI host
 
 ```shell
@@ -152,4 +158,8 @@ docker run -d --name gitlab-runner --restart always \
 -v /srv/gitlab-runner/config:/etc/gitlab-runner \
 -v /var/run/docker.sock:/var/run/docker.sock \
 gitlab/gitlab-runner:latest
+```
+
+```shell
+docker exec -it gitlab-runner gitlab-runner register
 ```
