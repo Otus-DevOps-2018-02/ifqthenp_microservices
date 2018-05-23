@@ -6,9 +6,8 @@
 | --- | --- |
 | :large_blue_diamond: | Main task |
 | :large_orange_diamond: | Extra task for self-study |
-| :diamonds: | Homework delimiter |
 
-## :diamonds: HW 13. Containerisation technology. Introduction to Docker
+## HW 13. Containerisation technology. Introduction to Docker
 
 ### Completed tasks
 
@@ -39,7 +38,7 @@
 - [Docker Compose documentation](https://docs.docker.com/compose/)
 - [IBM Research Report. An Updated Performance Comparison of Virtual Machines and Linux Containers](https://domino.research.ibm.com/library/cyberdig.nsf/papers/0929052195DD819C85257D2300681E7B/$File/rc25482.pdf)
 
-## :diamonds: HW 14. Docker containers
+## HW 14. Docker containers
 
 - :large_blue_diamond: Created docker-host on GCP instance using `docker-machine` command
 - :large_blue_diamond: Created Dockerfile with configuration necessary to build `reddit` image
@@ -71,7 +70,7 @@ docker push <your-login>/otus-reddit:1.0
 docker logs reddit -f
 ```
 
-## :diamonds: HW 15. Docker images & microservices
+## HW 15. Docker images & microservices
 
 ## Completed tasks
 
@@ -95,7 +94,7 @@ docker logs reddit -f
 - [Dockerfile reference](https://docs.docker.com/engine/reference/builder/)
 - [Best practices for writing Dockerfiles](https://docs.docker.com/develop/develop-images/dockerfile_best-practices/)
 
-## :diamonds: HW 16. Docker networking & docker-compose
+## HW 16. Docker networking & docker-compose
 
 ### Completed tasks
 
@@ -120,7 +119,7 @@ docker logs reddit -f
 - `docker-compose -f docker-compose.yml`
 - `docker-compose ps`
 
-## :diamonds: HW 17. GitLab CI: Building Continuous Integration Pipeline
+## HW 17. GitLab CI: Building Continuous Integration Pipeline
 
 ### Completed tasks
 
