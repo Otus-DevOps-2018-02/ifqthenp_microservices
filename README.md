@@ -138,11 +138,11 @@ docker logs reddit -f
 2. Run `packer build -var-file=packer/variables.json packer/gitlab.json` if you need to build an image with Docker and Docker Compose preinstalled
 3. `cd` into `terraform/bucket` folder and run `terraform init` to initialise storage for Terraform state
 4. `cd` into `terraform` folder
-5. Run `terraform init`, `terraform plan`, and `terraform apply` to create GCP instance based on previously Packer built image
+5. Run `terraform init`, `terraform plan`, and `terraform apply` to create GCE instance based on previously Packer-built image
 6. `cd` into `ansible` folder
 7. Run `ansible-playbook playbooks/gitlab-setup.yml` to complete GitLab CI setup
 8. Wait for couple of minutes for GitLab initial configuration to finalize
-9. Use GCP instance external IP to access GitLab's CI web interface
+9. Use GCE instance external IP to access GitLab's CI web interface
 
 ### Useful commands
 
