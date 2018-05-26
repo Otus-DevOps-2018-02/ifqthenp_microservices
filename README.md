@@ -163,3 +163,13 @@ gitlab/gitlab-runner:latest
 ```shell
 docker exec -it gitlab-runner gitlab-runner register
 ```
+
+## HW 18. GitLab CI: Continuous Delivery
+
+### Completed tasks
+
+- :large_blue_diamond: Created new project `example2` in Gitlab CE and enabled `gitlab runner` for that project
+- :large_blue_diamond: Added `dev`, `staging`, and `production` environments
+- :large_blue_diamond: Added `when:manual` parameter to `staging` and `production` environments
+- :large_blue_diamond: Added `only` parameter to set job policy to limit when job is created
+- :large_blue_diamond: Added dynamic environments using GitLab environment variables
