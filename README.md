@@ -6,9 +6,8 @@
 | --- | --- |
 | :large_blue_diamond: | Main task |
 | :large_orange_diamond: | Extra task for self-study |
-| :diamonds: | Homework delimiter |
 
-## :diamonds: HW 13. Containerisation technology. Introduction to Docker
+## HW 13. Containerisation technology. Introduction to Docker
 
 ### Completed tasks
 
@@ -39,7 +38,7 @@
 - [Docker Compose documentation](https://docs.docker.com/compose/)
 - [IBM Research Report. An Updated Performance Comparison of Virtual Machines and Linux Containers](https://domino.research.ibm.com/library/cyberdig.nsf/papers/0929052195DD819C85257D2300681E7B/$File/rc25482.pdf)
 
-## :diamonds: HW 14. Docker containers
+## HW 14. Docker containers
 
 - :large_blue_diamond: Created docker-host on GCP instance using `docker-machine` command
 - :large_blue_diamond: Created Dockerfile with configuration necessary to build `reddit` image
@@ -71,7 +70,7 @@ docker push <your-login>/otus-reddit:1.0
 docker logs reddit -f
 ```
 
-## :diamonds: HW 15. Docker images & microservices
+## HW 15. Docker images & microservices
 
 ## Completed tasks
 
@@ -95,7 +94,7 @@ docker logs reddit -f
 - [Dockerfile reference](https://docs.docker.com/engine/reference/builder/)
 - [Best practices for writing Dockerfiles](https://docs.docker.com/develop/develop-images/dockerfile_best-practices/)
 
-## :diamonds: HW 16. Docker networking & docker-compose
+## HW 16. Docker networking & docker-compose
 
 ### Completed tasks
 
@@ -119,3 +118,48 @@ docker logs reddit -f
 - `docker network connect back_net post`
 - `docker-compose -f docker-compose.yml`
 - `docker-compose ps`
+
+## HW 17. GitLab CI: Building Continuous Integration Pipeline
+
+### Completed tasks
+
+- :large_blue_diamond: created folder `gitlab-infra` with infrastructure code using Packer, Terraform, and Ansible to automate GitLab deployment with Docker
+- :large_blue_diamond: in GitLab CE created `homework` group with `example` project in it
+- :large_blue_diamond: defined CI/CD pipeline in `.gitlab-ci.yml`
+- :large_blue_diamond: registered runner for the project
+- :large_blue_diamond: added `reddit` monolith application into the repo
+- :large_blue_diamond: redefined CI/CD pipeline for testing `reddit` monolith app
+- :large_orange_diamond: integrated GitLab with Slack notifications
+
+### How to launch the project
+
+1. `cd` into `gitlab-infra` folder
+2. Run `packer build -var-file=packer/variables.json packer/gitlab.json` if you need to build an image with Docker and Docker Compose preinstalled
+3. `cd` into `terraform/bucket` folder and run `terraform init` to initialise storage for Terraform state
+4. `cd` into `terraform` folder
+5. Run `terraform init`, `terraform plan`, and `terraform apply` to create GCE instance based on previously Packer-built image
+6. `cd` into `ansible` folder
+7. Run `ansible-playbook playbooks/gitlab-setup.yml` to complete GitLab CI setup
+8. Wait for couple of minutes for GitLab initial configuration to finalize
+9. Use GCE instance external IP to access GitLab's CI web interface
+
+### Useful commands
+
+Change remote's URL in `.git/config`
+
+```shell
+git remote set-url gitlab http://<GCE PUBLIC IP>/homework/example.git
+```
+
+Register Runner on GitLab CI host
+
+```shell
+docker run -d --name gitlab-runner --restart always \
+-v /srv/gitlab-runner/config:/etc/gitlab-runner \
+-v /var/run/docker.sock:/var/run/docker.sock \
+gitlab/gitlab-runner:latest
+```
+
+```shell
+docker exec -it gitlab-runner gitlab-runner register
+```

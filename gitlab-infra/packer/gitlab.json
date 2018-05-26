@@ -1,0 +1,25 @@
+{
+  "builders": [
+    {
+      "disk_size": "{{user `disk_size`}}",
+      "disk_type": "{{user `disk_type`}}",
+      "image_description": "{{user `image_description`}}",
+      "image_family": "{{user `image_family`}}",
+      "image_name": "gitlab-base-{{isotime `20060102-150405`}}",
+      "machine_type": "{{user `machine_type`}}",
+      "network": "default",
+      "project_id": "{{user `project_id`}}",
+      "source_image_family": "{{user `source_image_family`}}",
+      "ssh_username": "{{user `ssh_username`}}",
+      "type": "googlecompute",
+      "zone": "{{user `zone`}}"
+    }
+  ],
+  "post-processors": [],
+  "provisioners": [
+    {
+      "playbook_file": "ansible/playbooks/packer_install_docker.yml",
+      "type": "ansible"
+    }
+  ]
+}
