@@ -31,6 +31,9 @@ services:
 
   prometheus:
     image: '${USER_NAME}/prometheus'
+    networks:
+      - front_net
+      - back_net
     ports:
       - '9090:9090'
     volumes:
