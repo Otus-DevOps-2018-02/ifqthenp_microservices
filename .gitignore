@@ -9,5 +9,5 @@ variables.json
 *.retry
 gce.ini
 vault.key
-*.log
+!docker/docker-monolith/docker-1.log
 .env
