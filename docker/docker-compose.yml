@@ -9,28 +9,42 @@ services:
         aliases:
           - post_db
           - comment_db
+
   ui:
-    build: ./ui
-    image: '${USERNAME}/ui:${APP_IMAGE_ALPINE}'
+    image: '${USER_NAME}/ui:${VERSION}'
     ports:
       - '${PUMA_PORT}:${PUMA_PORT}/tcp'
     networks:
       - front_net
+
   post:
-    build: ./post-py
-    image: '${USERNAME}/post:${APP_IMAGE_ALPINE}'
+    image: '${USER_NAME}/post:${VERSION}'
     networks:
       - front_net
       - back_net
+
   comment:
-    build: ./comment
-    image: '${USERNAME}/comment:${APP_IMAGE_ALPINE}'
+    image: '${USER_NAME}/comment:${VERSION}'
     networks:
       - front_net
       - back_net
+
+  prometheus:
+    image: '${USER_NAME}/prometheus'
+    ports:
+      - '9090:9090'
+    volumes:
+      - prometheus_data:/prometheus'
+    command:
+      - '--config.file=/etc/prometheus/prometheus.yml'
+      - '--storage.tsdb.path=/prometheus'
+      - '--storage.tsdb.retention=1d'
+
 volumes:
+  prometheus_data:
   post_db:
     name: post_db
+
 networks:
   back_net:
     ipam:
