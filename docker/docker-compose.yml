@@ -43,8 +43,10 @@ services:
       - '--storage.tsdb.path=/prometheus'
       - '--storage.tsdb.retention=1d'
 
-  node_exporter:
-    image: prom/node-exporter:v0.15.2
+  node-exporter:
+    image: prom/node-exporter:latest
+    networks:
+      - back_net
     user: root
     volumes:
       - /proc:/host/proc:ro
