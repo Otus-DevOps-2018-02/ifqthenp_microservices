@@ -64,6 +64,12 @@ services:
     networks:
       - back_net
 
+  blackbox-exporter:
+    image: '${USER_NAME}/blackbox_exporter:latest'
+    networks:
+      - back_net
+      - front_net
+
 volumes:
   prometheus_data:
   post_db:
