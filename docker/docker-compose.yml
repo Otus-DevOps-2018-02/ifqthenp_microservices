@@ -30,7 +30,7 @@ services:
       - back_net
 
   prometheus:
-    image: '${USER_NAME}/prometheus'
+    image: '${USER_NAME}/prometheus:latest'
     networks:
       - front_net
       - back_net
