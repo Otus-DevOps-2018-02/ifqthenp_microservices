@@ -173,3 +173,19 @@ docker exec -it gitlab-runner gitlab-runner register
 - :large_blue_diamond: Added `when:manual` parameter to `staging` and `production` environments
 - :large_blue_diamond: Added `only` parameter to set job policy to limit when job is created
 - :large_blue_diamond: Added dynamic environments using GitLab environment variables
+
+## HW 19. Introduction to monitoring. Monitoring systems
+
+### Completed tasks
+
+- :large_blue_diamond: Created GCE instance `docker-host` using `docker-machine` command for the Reddit and Prometheus containers
+- :large_blue_diamond: Launched Prometheus container built from `prom/prometheus:v2.1.0` to learn about the UI and basic Prometheus metrics
+- :large_blue_diamond: Created new image `$(USER_NAME)/prometheus` built using `prom/prometheus:v2.1.0` with custom config provided in `prometheus.yml`
+- :large_blue_diamond: Built images for the Reddit app services using `docker_build.sh` scripts provided in `ui`, `post-py`, and `comment` folders
+- :large_blue_diamond: Added `prometheus` service to the Compose file and launched microservices using `docker-compose up -d` command
+- :large_blue_diamond: Using Prometheus web interface inspected services' health status, stopped some services to check Prometheus status codes and relaunched the services again to make sure that all services are healthy
+- :large_blue_diamond: Added `node-exporter` service to the Compose file, added `node` job to the `prometheus.yml`, and rebuilt `$(USER_NAME)/prometheus` image
+- :large_blue_diamond: Pushed images used in this homework to the Docker Hub
+- :large_orange_diamond: Added Dockerfile to `docker/mongodb_exporter` folder to build Docker image and added `mongodb` job to `prometheus.yml` for MongoDB monitoring service
+- :large_orange_diamond: Added Dockerfile to `docker/blackbox_exporter` folder to build Docker image and added `blackbox` job with `http_2xx` module to `prometheus.yml` to monitor HTTP for `comment`, `ui`, and `post` microservices
+- :large_orange_diamond: Created Makefile that can build all images need for this homework and can push them to Docker Hub
