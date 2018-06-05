@@ -1,3 +1,4 @@
+.EXPORT_ALL_VARIABLES:
 USER_NAME = ifqthenp
 
 all: build push
