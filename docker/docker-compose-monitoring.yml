@@ -62,6 +62,8 @@ services:
       - GF_SECURITY_ADMIN_PASSWORD=secret
     depends_on:
       - prometheus
+    networks:
+      - back_net
     ports:
       - '3000:3000'
 
