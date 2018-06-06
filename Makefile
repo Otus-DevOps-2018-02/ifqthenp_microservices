@@ -17,7 +17,7 @@ build_mongodb_exporter:
 build_blackbox_exporter:
 	docker build -t $(USER_NAME)/blackbox_exporter monitoring/blackbox_exporter
 build_alertmanager:
-	docker build -t $(USER_NAME)/blackbox_exporter monitoring/alertmanager
+	docker build -t $(USER_NAME)/alertmanager monitoring/alertmanager
 
 push: push_ui push_comment push_post push_prometheus push_mongodb_exporter push_blackbox_exporter
 push_ui:
