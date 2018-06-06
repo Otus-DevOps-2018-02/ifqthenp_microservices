@@ -43,6 +43,8 @@ services:
 
   cadvisor:
     image: google/cadvisor:v0.29.0
+    networks:
+      - back_net
     volumes:
       - '/:/rootfs:ro'
       - '/var/run:/var/run:rw'
