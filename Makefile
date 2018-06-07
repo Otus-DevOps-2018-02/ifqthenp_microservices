@@ -3,7 +3,7 @@ USER_NAME = ifqthenp
 
 all: build push
 
-build: build_ui build_comment build_post build_prometheus build_mongodb_exporter build_blackbox_exporter build_alertmanager
+build: build_ui build_comment build_post build_prometheus build_mongodb_exporter build_blackbox_exporter build_alertmanager build_telegraf
 build_ui:
 	cd src/ui && bash docker_build.sh
 build_comment:
@@ -18,8 +18,10 @@ build_blackbox_exporter:
 	docker build -t $(USER_NAME)/blackbox_exporter monitoring/blackbox_exporter
 build_alertmanager:
 	docker build -t $(USER_NAME)/alertmanager monitoring/alertmanager
+build_telegraf:
+	docker build -t $(USER_NAME)/telegraf monitoring/telegraf
 
-push: push_ui push_comment push_post push_prometheus push_mongodb_exporter push_blackbox_exporter push_alertmanager
+push: push_ui push_comment push_post push_prometheus push_mongodb_exporter push_blackbox_exporter push_alertmanager push_telegraf
 push_ui:
 	docker push $(USER_NAME)/ui
 push_comment:
@@ -34,5 +36,7 @@ push_blackbox_exporter:
 	docker push $(USER_NAME)/blackbox_exporter
 push_alertmanager:
 	docker push $(USER_NAME)/alertmanager
+push_telegraf:
+	docker push $(USER_NAME)/telegraf
 
-.PHONY: all build build_ui build_comment build_post build_prometheus build_mongodb_exporter build_blackbox_exporter build_alertmanager push push_ui push_comment push_post push_prometheus push_mongodb_exporter push_blackbox_exporter push_alertmanager
+.PHONY: all build build_ui build_comment build_post build_prometheus build_mongodb_exporter build_blackbox_exporter build_alertmanager build_telegraf push push_ui push_comment push_post push_prometheus push_mongodb_exporter push_blackbox_exporter push_alertmanager push_telegraf
