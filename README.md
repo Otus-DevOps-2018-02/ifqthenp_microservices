@@ -189,3 +189,16 @@ docker exec -it gitlab-runner gitlab-runner register
 - :large_orange_diamond: Added Dockerfile to `docker/mongodb_exporter` folder to build Docker image and added `mongodb` job to `prometheus.yml` for MongoDB monitoring service
 - :large_orange_diamond: Added Dockerfile to `docker/blackbox_exporter` folder to build Docker image and added `blackbox` job with `http_2xx` module to `prometheus.yml` to monitor HTTP for `comment`, `ui`, and `post` microservices
 - :large_orange_diamond: Created Makefile that can build all images need for this homework and can push them to Docker Hub
+
+## HW 20. Monitoring of application and infrastructure
+
+### Completed tasks
+
+- :large_blue_diamond: Installed Google's cAdvisor resource analyser on Docker container to collect metrics about services
+- :large_blue_diamond: Installed and configured Grafana analytics platform for collected metrics
+- :large_blue_diamond: Created and imported various dashboards in Grafana including histogram and percentile metrics from Prometheus
+- :large_blue_diamond: Set up alerting rules for Alertmanager from Prometheus and configured Slack notifications
+- :large_orange_diamond: Added rules for new images to the `Makefile`
+- :large_orange_diamond: Set up experimental Docker daemon metrics collection in Prometheus format
+- :large_orange_diamond: Set up InfluxDB Telegraf for Docker daemon metrics collection
+- :large_orange_diamond: Configured Alertmanager to send email notifications
