@@ -227,3 +227,7 @@ docker-machine create --driver google \
   --google-open-port 9411/tcp \
   docker-host
 ```
+
+### Useful links
+
+[The Twelve-Factor App](https://12factor.net/)
