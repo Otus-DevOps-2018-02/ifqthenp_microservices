@@ -242,3 +242,4 @@ docker-machine create --driver google \
   - `post-deployment.yml`
   - `mongo-deployment.yml`
 - :large_blue_diamond: Successfully completed [Kubernetes The Hard Way](https://github.com/kelseyhightower/kubernetes-the-hard-way) tutorial from Kelsey Hightower
+- :large_blue_diamond: Successfully tested Reddit application deployment to the Kubernetes cluster with `kubectl -f <filename>` command
