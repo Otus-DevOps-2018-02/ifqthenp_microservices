@@ -231,3 +231,14 @@ docker-machine create --driver google \
 ### Useful links
 
 [The Twelve-Factor App](https://12factor.net/)
+
+## HW 22. Introduction to Kubernetes
+
+### Completed tasks
+
+- :large_blue_diamond: Created `yml` files in `kubernetes/reddit` folder with Deployment manifests for Reddit application:
+  - `ui-deployment.yml`
+  - `comment-deployment.yml`
+  - `post-deployment.yml`
+  - `mongo-deployment.yml`
+- :large_blue_diamond: Successfully completed [Kubernetes The Hard Way](https://github.com/kelseyhightower/kubernetes-the-hard-way) tutorial from Kelsey Hightower
