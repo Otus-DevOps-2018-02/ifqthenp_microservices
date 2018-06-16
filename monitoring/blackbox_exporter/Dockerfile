@@ -8,6 +8,7 @@ RUN git clone "https://github.com/prometheus/blackbox_exporter" "$SRC" \
     && go get -d \
     && go build -o blackbox_exporter
 
+FROM golang:latest
 COPY --from=builder /go/src/github.com/prometheus/blackbox_exporter/blackbox_exporter /bin/blackbox_exporter
 COPY --from=builder /go/src/github.com/prometheus/blackbox_exporter/blackbox.yml /etc/blackbox_exporter/config.yml
 EXPOSE 9115
