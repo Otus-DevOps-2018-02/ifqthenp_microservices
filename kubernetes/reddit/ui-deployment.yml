@@ -22,3 +22,8 @@ spec:
       containers:
       - image: 'ifqthenp/ui:latest'
         name: ui
+        env:
+        - name: ENV
+          valueFrom:
+            fieldRef:
+              fieldPath: metadata.namespace
