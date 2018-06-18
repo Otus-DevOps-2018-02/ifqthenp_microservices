@@ -1,7 +1,7 @@
 # Completed Homework №
 
-- :large_blue_diamond: [ ] Main tasks
-- :large_orange_diamond: [ ] Extra tasks for self-study
+- [ ] :large_blue_diamond: Main tasks
+- [ ] :large_orange_diamond: Extra tasks for self-study
 
 ## The following tasks have been completed
 
