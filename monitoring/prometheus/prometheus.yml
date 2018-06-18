@@ -34,9 +34,9 @@ scrape_configs:
       module: [http_2xx]
     static_configs:
       - targets:
-        - http://ui:9292
-        - http://comment:9292
-        - http://post:5000
+        - http://ui:9292/healthcheck
+        - http://comment:9292/healthcheck
+        - http://post:9090/healthcheck
     relabel_configs:
       - source_labels: [__address__]
         target_label: __param_target
