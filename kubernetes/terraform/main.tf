@@ -28,6 +28,10 @@ resource "google_container_cluster" "primary" {
   }
 
   addons_config {
+    network_policy_config {
+      disabled = false
+    }
+
     kubernetes_dashboard {
       disabled = false
     }
