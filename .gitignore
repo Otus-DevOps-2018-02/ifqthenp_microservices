@@ -13,3 +13,5 @@ vault.key
 .env
 *.pem
 *.csr
+tls.crt
+tls.key
