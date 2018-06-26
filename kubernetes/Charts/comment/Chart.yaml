@@ -1,5 +1,5 @@
 ---
-name: post
+name: comment
 version: 1.0.0
 description: OTUS Reddit App comment service
 maintainers:
