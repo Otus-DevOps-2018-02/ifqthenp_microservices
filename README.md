@@ -202,3 +202,32 @@ docker exec -it gitlab-runner gitlab-runner register
 - :large_orange_diamond: Set up experimental Docker daemon metrics collection in Prometheus format
 - :large_orange_diamond: Set up InfluxDB Telegraf for Docker daemon metrics collection
 - :large_orange_diamond: Configured Alertmanager to send email notifications
+
+## HW 21. Logging and distributed tracing
+
+### Completed tasks
+
+- :large_blue_diamond: Configured and launched centralised EFK logging system:
+  - ElasticSearch (searching engine for log data)
+  - Fluentd (logs aggregator)
+  - Kibana (visualisation of logged data)
+- :large_blue_diamond: Configured `post` and `ui` services to send logs to Fluentd service using Docker `fluentd` driver
+- :large_blue_diamond: Launched Zipkin distributed tracing service and analysed the traces of services using Zipkin Web UI
+- :large_orange_diamond: Configured Fluentd service to parse unstructured logs received from `ui` service with `grok` parser
+
+### Useful commands
+
+```shell
+docker-machine create --driver google \
+  --google-machine-image https://www.googleapis.com/compute/v1/projects/ubuntu-os-cloud/global/images/family/ubuntu-1604-lts \
+  --google-machine-type n1-standard-1 \
+  --google-disk-size 20 \
+  --google-open-port 5601/tcp \
+  --google-open-port 9292/tcp \
+  --google-open-port 9411/tcp \
+  docker-host
+```
+
+### Useful links
+
+[The Twelve-Factor App](https://12factor.net/)
