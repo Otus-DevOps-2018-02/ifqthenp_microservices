@@ -11,3 +11,5 @@ gce.ini
 vault.key
 !docker/docker-monolith/docker-1.log
 .env
+*.pem
+*.csr
