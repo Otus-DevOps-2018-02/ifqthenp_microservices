@@ -289,3 +289,14 @@ subjects:
   - persistentVolume
   - persistentVolumeClaim
 - :large_blue_diamond: Configured `Storage Class` object with `persistentVolumeClaim` for automated dynamic storage creation on SSD
+
+## HW 25. CI/CD with Kubernetes
+
+### Completed tasks
+
+- :large_blue_diamond: Installed and configured Helm
+- :large_blue_diamond: Deployed Helm Charts with ui, comment, and post applications using template functions
+- :large_blue_diamond: Deployed reddit Chart using Helm
+- :large_blue_diamond: Deployed Gitlab Community Edition using Helm
+- :large_blue_diamond: Created ui, post, comment, and reddit-deploy public repositories in Gitlab
+- :large_blue_diamond: Created .gitlab-ci.yml config files for all repos
