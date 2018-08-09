@@ -25,3 +25,8 @@ spec:
         env:
         - name: POST_DATABASE_HOST
           value: post-db
+        app: post
+    spec:
+      containers:
+        - image: 'ifqthenp/post:latest'
+          name: post
