@@ -300,3 +300,12 @@ subjects:
 - :large_blue_diamond: Deployed Gitlab Community Edition using Helm
 - :large_blue_diamond: Created ui, post, comment, and reddit-deploy public repositories in Gitlab
 - :large_blue_diamond: Created .gitlab-ci.yml config files for all repos
+
+## HW 26. Monitoring and Logging with Kubernetes
+
+### Completed tasks
+
+- :large_blue_diamond: Installed Prometheus using Helm
+- :large_blue_diamond: Configured Prometheus to monitor metrics for Reddit app services
+- :large_blue_diamond: Installed Grafana using Helm
+- :large_blue_diamond: Used previously created dashboards in Grafana for application monitoring
