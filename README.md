@@ -243,3 +243,31 @@ docker-machine create --driver google \
   - `mongo-deployment.yml`
 - :large_blue_diamond: Successfully completed [Kubernetes The Hard Way](https://github.com/kelseyhightower/kubernetes-the-hard-way) tutorial from Kelsey Hightower
 - :large_blue_diamond: Successfully tested Reddit application deployment to the Kubernetes cluster with `kubectl -f <filename>` command
+
+## HW 23. Application Deploy to the GKE Cluster and k8s Security Model
+
+### Completed tasks
+
+- :large_blue_diamond: Created k8s Deployment, Service, and Namespace kinds config files for Reddit application deployment
+- :large_blue_diamond: Application has been successfully deployed to the local `minikube` cluster
+- :large_blue_diamond: GKE cluster with 2 nodes has been created using GCP web user interface
+- :large_orange_diamond: GKE cluster with 2 nodes has been created using `terraform` tool
+- :large_orange_diamond: Created config file allowing `kubernetes-dashboard` service account to access information about the cluster
+
+```yml
+---
+apiVersion: rbac.authorization.k8s.io/v1beta1
+kind: ClusterRoleBinding
+metadata:
+  name: kubernetes-dashboard
+  labels:
+    k8s-app: kubernetes-dashboard
+roleRef:
+  apiGroup: rbac.authorization.k8s.io
+  kind: ClusterRole
+  name: cluster-admin
+subjects:
+- kind: ServiceAccount
+  name: kubernetes-dashboard
+  namespace: kube-system
+```

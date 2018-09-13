@@ -8,11 +8,11 @@
 - Task 1
 - Task 2
 
-## How to get project running
+## How to get the project running
 
 - For example, run command X in folder Y
 
-## How to check that project actually works
+## How to check that the project actually works
 
 - Ensure that the build passed TravisCI tests
   - [#andrei_bogomja](https://devops-team-otus.slack.com/messages/C9M6L1XB3) Slack channel
