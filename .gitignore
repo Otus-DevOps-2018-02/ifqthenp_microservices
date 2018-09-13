@@ -13,3 +13,6 @@ vault.key
 .env
 *.pem
 *.csr
+tls.crt
+tls.key
+ui-ingress-tls-secret.yml

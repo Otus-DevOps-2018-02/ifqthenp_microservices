@@ -271,3 +271,21 @@ subjects:
   name: kubernetes-dashboard
   namespace: kube-system
 ```
+
+## HW 24. Kubernetes Networks and Storage
+
+### Completed tasks
+
+- :large_blue_diamond: Configured and tested several services types responsible for communication between pods and external resources:
+  - ClusterIP
+  - NodePort
+  - LoadBalancer
+- :large_blue_diamond: Configured `Ingress` Kubernetes object for load balancing and TLS traffic management
+- :large_orange_diamond: Created Kubernetes manifest for `Secret` object in YAML format
+- :large_blue_diamond: Configured Network Policy to allow database connection only for Pods with specific labels, i.e. `reddit`, `comment`, `post`
+- :large_blue_diamond: Configured and tested several Volume types for database persistent storage:
+  - emptyDir
+  - gcePersistentDisk
+  - persistentVolume
+  - persistentVolumeClaim
+- :large_blue_diamond: Configured `Storage Class` object with `persistentVolumeClaim` for automated dynamic storage creation on SSD

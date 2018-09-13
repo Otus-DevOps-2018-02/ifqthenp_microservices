@@ -4,6 +4,7 @@ USER_NAME = ifqthenp
 all: build push
 
 build: build_ui build_comment build_post build_prometheus build_mongodb_exporter build_blackbox_exporter build_alertmanager build_telegraf build_fluentd
+
 build_ui:
 	cd src/ui && bash docker_build.sh
 build_comment:
@@ -24,6 +25,7 @@ build_fluentd:
 	docker build -t $(USER_NAME)/fluentd logging/fluentd
 
 push: push_ui push_comment push_post push_prometheus push_mongodb_exporter push_blackbox_exporter push_alertmanager push_telegraf push_fluentd
+
 push_ui:
 	docker push $(USER_NAME)/ui
 push_comment:
