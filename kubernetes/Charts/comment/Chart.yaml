@@ -1,0 +1,8 @@
+---
+name: comment
+version: 1.0.0
+description: OTUS Reddit App comment service
+maintainers:
+  - name: Andrei Bogomja
+    email: my@mail.com
+appVersion: 1.0

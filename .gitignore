@@ -16,3 +16,4 @@ vault.key
 tls.crt
 tls.key
 ui-ingress-tls-secret.yml
+ingress-tls-secret.yaml
